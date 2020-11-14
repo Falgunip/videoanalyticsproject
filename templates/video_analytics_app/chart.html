@@ -1,0 +1,41 @@
+{% include 'video_analytics_app/homepage.html' %}
+
+{% block tittle %}
+{% endblock tittle %}
+{% block custom_css %}
+<style>
+</style>
+{% endblock custom_css %}
+{% block bodydata %}
+    <canvas id="videoWatchedCount" width="400" height="400"></canvas>
+{% endblock bodydata %}
+{% block custom_js %}
+<script>
+    var ctx = document.getElementById('videoWatchedCount');
+    var videoTitles = "{{videoTitles}}";
+    var videoUserWatchedCount = "{{videoUserWatchedCount}}";
+    var videoWatchedCount = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: videoTitles.split('|'),
+        datasets: [{
+            label: 'Times Video Watched',
+            data: videoUserWatchedCount.split('|'),
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+{% endblock custom_js %}
+
+
+

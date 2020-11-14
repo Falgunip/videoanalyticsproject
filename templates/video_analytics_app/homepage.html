@@ -1,0 +1,131 @@
+{% extends 'video_analytics_app/base_template.html' %}
+
+{% block tittle %}
+{% endblock tittle %}
+{% block custom_css %}
+<style>
+*
+{
+padding:0;
+margin:0;
+box-sizing: border-box;
+}
+.header{
+text-align:center;
+float:center;
+}
+body
+{
+background-size:cover;
+background-position:center;
+font-family:sans-serif;
+}
+.menu-bar{
+background:sienna;
+text-align:center;
+float:left;
+position:relative;
+z-index: 1;
+}
+.menu-bar ul{
+display:inline-flex;
+list-style:none;
+color:#fff;
+}
+.menu-bar ul li{
+width:250px;
+margin:30px;
+font-size:22px;
+list style: none;
+}
+
+.menu-bar ul li a{
+text-decoration:none;
+color:#fff;
+}
+.menu-bar ul li:hover{
+background:#c46c14;
+border:2px;
+}
+.menu-bar .fa{
+margin-right:8px;
+}
+.sub-menu-1{
+display:none;
+}
+.menu-bar ul li:hover .sub-menu-1{
+display:block;
+position:absolute;
+background:sienna;
+margin-top:15px;
+margin-left:-15px;
+}
+.menu-bar ul li:hover .sub-menu-1 ul{
+display:block;
+margin:10px;
+}
+.menu-bar ul li:hover .sub-menu-1 ul li{
+width:150px;
+padding:10px;
+border-bottom:1px dotted #fff;
+background:transparent;
+border-radius:0;
+text-align:left;
+}
+.menu-bar ul li:hover .sub-menu-1 ul li:last-child{
+border-bottom:none;
+}
+.menu-bar ul li:hover .sub-menu-1 ul li a:hover{
+color:#ff7b00;
+}
+.search{
+margin:20px;
+margin-left:350px;
+}
+input[type=text]{
+padding:6px;
+border:none;
+font-size:17px;
+font-family:sans-serif;
+}
+
+</style>
+{% endblock custom_css %}
+{% block bodydata %}
+<nav class="navbar navbar-inverse" style="background-color:sienna">
+    <div class="container-fluid">
+        <!--Header-->
+        <div class="header">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/homepage" style="color:white;font-size:40px;margin-left:600px;margin-right:300px;">Video Analytics System</a>
+        </div>
+        </div>
+        <div class="menu-bar">
+            <ul>
+                <li><a href="/homepage"><i class="fa fa-home"></i>Home</a></li>
+                {% if request.user.is_superuser %}
+                <li><a href="/addData"><i class="fa fa-video-camera"></i>Add Video</a>
+                </li>
+                {% endif %}
+                <li><a href="/view_video"><i class="fa fa-video-camera"></i>View Video</a>
+                </li>
+                {% if request.user.is_superuser %}
+                <li><a href="/videochart"><i class="fa fa-line-chart"></i>Video Analytics</a>
+                </li>
+                {% endif %}
+                <li><a href="/"><i class="fa fa-sign-out"></i>Logout</a></li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+{% endblock bodydata %}
+{% block custom_js %}
+{% endblock custom_js %}
+

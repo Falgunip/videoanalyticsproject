@@ -1,0 +1,1 @@
+web: gunicorn videoanalyticsproject.wsgi --log-file -
